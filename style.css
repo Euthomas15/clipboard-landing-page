@@ -127,7 +127,7 @@ body {
   box-shadow: 0 8px 14px hsla(233, 100%, 69%, 0.35);
 }
 
-/* TODO: compare with design/active-states.jpg */
+/* compare with design/active-states.jpg */
 .btn:hover {
   filter: brightness(1.12);
 }
@@ -165,7 +165,7 @@ body {
   margin-bottom: 5rem;
 }
 
-/* ---------- Keep track of your snippets ---------- */
+/* ---------- Keep track of my snippets ---------- */
 .snippets {
   overflow: hidden; /* the computer image bleeds off the left edge */
 }
@@ -258,7 +258,7 @@ body {
   text-decoration: none;
 }
 
-/* hover colour with design/active-states.jpg in active state */
+/* hover color with design/active-states.jpg in active state */
 .footer__links a:hover {
   color: var(--green-500);
 }
