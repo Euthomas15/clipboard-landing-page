@@ -1,0 +1,407 @@
+/* ==========================================================
+   Clipboard landing page
+   Approach: desktop-first (base styles = 1440px design),
+   then max-width media queries scale the layout down.
+   ========================================================== */
+
+/* ---------- Design tokens (from style-guide.md) ---------- */
+:root {
+  --green-500: hsl(171, 66%, 44%);
+  --blue-100: hsl(233, 100%, 69%);
+  --gray-700: hsl(210, 10%, 33%);
+  --gray-500: hsl(201, 11%, 66%);
+  --footer-bg: hsl(0, 0%, 96%); /*I added eyeballed from the mockup, not in the style guide */
+
+  --font: "Bai Jamjuree", sans-serif;
+
+  /* Side padding that keeps content inside a 69rem (~1100px) column
+     on wide screens and never less than 1rem on small ones */
+  --gutter: max(1rem, calc((100% - 69rem) / 2));
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--blue-100);
+  outline-offset: 3px;
+}
+
+/* ---------- Base ---------- */
+body {
+  font-family: var(--font);
+  font-size: 1.125rem; /* 18px body copy */
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--gray-500);
+  background: #fff;
+}
+
+/* ---------- Shared type ---------- */
+.hero__title,
+.section-title {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--gray-700);
+  margin-bottom: 1.25rem;
+}
+
+.hero__title {
+  font-size: 2.5rem;
+}
+
+.section-title {
+  font-size: 2rem;
+}
+
+.hero__text,
+.section-text {
+  max-width: 43rem;
+  margin-inline: auto;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--gray-500);
+}
+
+.item-title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--gray-700);
+  margin-bottom: 0.75rem;
+}
+
+.item-text {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--gray-500);
+}
+
+/* ---------- Buttons ---------- */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 3rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  transition: filter 0.2s ease;
+}
+
+.btn--ios {
+  background: var(--green-500);
+  box-shadow: 0 8px 14px hsla(171, 66%, 44%, 0.35);
+}
+
+.btn--mac {
+  background: var(--blue-100);
+  box-shadow: 0 8px 14px hsla(233, 100%, 69%, 0.35);
+}
+
+/* TODO: compare with design/active-states.jpg */
+.btn:hover {
+  filter: brightness(1.12);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 8rem 1rem 5.5rem;
+  text-align: center;
+  background: url("./images/bg-header-desktop.png") no-repeat top center / 100% auto;
+}
+
+.hero__logo {
+  width: 7.75rem;
+  margin: 0 auto 3.5rem;
+}
+
+/* ---------- Page sections ---------- */
+.snippets,
+.access,
+.workflow,
+.clients,
+.cta {
+  padding-block: 5.5rem;
+  text-align: center;
+}
+
+.access,
+.workflow,
+.clients,
+.cta {
+  padding-inline: var(--gutter);
+}
+
+.section-intro {
+  margin-bottom: 5rem;
+}
+
+/* ---------- Keep track of your snippets ---------- */
+.snippets {
+  overflow: hidden; /* the computer image bleeds off the left edge */
+}
+
+.snippets .section-intro {
+  padding-inline: 1rem;
+}
+
+.snippets__body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+}
+
+.snippets__image {
+  width: calc(100% + 2.125rem);
+  max-width: none;
+  margin-left: -2.125rem;
+}
+
+.snippets__list {
+  display: grid;
+  gap: 3.5rem;
+  padding-left: 6.75rem;
+  padding-right: 1rem;
+  text-align: left;
+}
+
+.snippets__item {
+  max-width: 22rem;
+}
+
+/* ---------- Access Clipboard anywhere ---------- */
+.access__image {
+  width: 100%;
+  max-width: 50.5rem;
+  margin-inline: auto;
+}
+
+/* ---------- Supercharge your workflow ---------- */
+.workflow__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.workflow__icon {
+  margin: 0 auto 1.75rem;
+}
+
+/* ---------- Company logos ---------- */
+.clients__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.clients__list li {
+  min-width: 0;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  display: flex;
+  align-items: center;
+  padding: 2.5rem var(--gutter);
+  background: var(--footer-bg);
+}
+
+.footer__logo {
+  width: 3.5rem;
+}
+
+.footer__nav {
+  margin-left: 8.25rem;
+}
+
+.footer__links {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: 11.875rem;
+  row-gap: 1rem;
+}
+
+.footer__links a {
+  font-size: 1rem;
+  color: var(--gray-700);
+  text-decoration: none;
+}
+
+/* hover colour with design/active-states.jpg in active state */
+.footer__links a:hover {
+  color: var(--green-500);
+}
+
+.footer__social {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+
+/* ---------- Frontend Mentor attribution ---------- */
+.attribution {
+  padding: 1rem;
+  font-size: 0.6875rem;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+
+
+/* ==========================================================
+   Mobile (max 768px)  -  designed at 375px
+   ========================================================== */
+@media (max-width: 48em) {
+  body {
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding-top: 6rem;
+    padding-bottom: 5rem;
+    background-image: url("./images/bg-header-mobile.png");
+  }
+
+  .hero__title,
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .hero__text,
+  .section-text {
+    font-size: 1rem;
+  }
+
+  .item-title {
+    font-size: 1.125rem;
+  }
+
+  .snippets,
+  .access,
+  .workflow,
+  .clients,
+  .cta {
+    padding-block: 5rem;
+  }
+
+  .section-intro {
+    margin-bottom: 4rem;
+  }
+
+  /* Buttons stack and fill the width */
+  .btn-group {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .btn {
+    display: block;
+    padding: 1rem 1.5rem;
+  }
+
+  /* Snippets: image on top, list underneath */
+  .snippets__body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4rem;
+  }
+
+  .snippets__image {
+    width: calc(100% - 4rem);
+    max-width: 30rem;
+    margin: 0 auto;
+  }
+
+  .snippets__list {
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .snippets__item {
+    margin-inline: auto;
+  }
+
+  .access__image {
+    width: calc(100% - 4rem);
+    max-width: 30rem;
+  }
+
+  .workflow__list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4rem;
+  }
+
+  .workflow__item {
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
+  .clients__list {
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  /* Footer stacks and centres */
+  .footer {
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-block: 4rem;
+    text-align: center;
+  }
+
+  .footer__nav {
+    margin: 0;
+  }
+
+  .footer__links {
+    grid-template-rows: none;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    row-gap: 1.5rem;
+  }
+
+  .footer__social {
+    margin: 0;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
