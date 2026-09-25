@@ -150,7 +150,7 @@ body {
 .workflow,
 .clients,
 .cta {
-  padding-block: 5.5rem;
+  padding-block: 2.5rem;
   text-align: center;
 }
 
@@ -278,6 +278,12 @@ body {
 
 .attribution a {
   color: hsl(228, 45%, 44%);
+  text-decoration: none;
+}
+
+.attribution a:hover {
+  text-decoration: underline;
+  color: hsl(171, 66%, 44%)
 }
 
 
